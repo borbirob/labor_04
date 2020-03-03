@@ -15,13 +15,26 @@ public class Course {
 	public String getNeptun() { return neptun; }
 	public void setTeacher(Teacher t) { teacher = t; }
 	public void addStudent(Student s) throws Exception { 
-		for (int i = 0; i < students.length; i++) {
-			if (students[i] == null) {
-				students[i] = s;
-				return;
+		for (int i = 0; i < students.length; i++) 
+		{
+			if(students[i] != null) 
+			{
+				if (s.equals(students[i])) 
+				{
+					throw new Exception("A kurzust mÃ¡r felvette");
 				}
 			}
-		throw new Exception("Kurzus megtelt!");	
+		}
+		
+		for (int i = 0; i < students.length; i++) 
+		{
+			if (students[i] == null) 
+			{
+				students[i] = s;
+				return;
+			}
+		}
+		throw new Exception("Kurzus megtelt");	
 	}
 	
 	
@@ -42,7 +55,7 @@ public class Course {
 				return;
 				}
 			}
-		throw new Exception("“Nincs ilyen neptunkód");
+		throw new Exception("â€œNincs ilyen neptunkÃ³d");
 	}
 	public String toString() {
 		return name+" ("+neptun+")";
